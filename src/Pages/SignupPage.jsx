@@ -39,6 +39,8 @@ function PasswordValidation(password) {
   return errors;
 }
 
+
+
 function EmailValidation(email) {
   const errors = [];
   if (!email) {
@@ -62,8 +64,8 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://spacex.com/">
-        SpaceX
+      <Link color="inherit" href="https://xpayback.com/">
+        XPAYBACK
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -83,6 +85,11 @@ export default function SignupPage() {
   const [load, setload] = React.useState(false)
 
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    sessionStorage.removeItem("token")
+  }, [])
+
 
   const handleSubmit = (event) => {
     setload(true)
@@ -115,7 +122,7 @@ export default function SignupPage() {
     }
     if (passwordValidationErrors.length === 0 && emailValidationErrors.length === 0 && nameValidationErrors.length === 0) {
 
-      axios.post('https://spacexbackend.vercel.app/signup', {
+      axios.post('https://xpayback-imgres-backend.vercel.app/signup', {
         email,
         password,
         username: firstName + " " + lastName
@@ -169,7 +176,7 @@ export default function SignupPage() {
               backdropFilter: " blur( 5px )", border: "2px solid rgba( 255, 255, 255, 0.18 )", borderRadius: "0.2rem"
             }}
           >
-            <svg version="1.1" style={{ fill: "#ffffff" }} x="0px" y="0px" viewBox="0 0 400 50">
+            {/* <svg version="1.1" style={{ fill: "#ffffff" }} x="0px" y="0px" viewBox="0 0 400 50">
               <title>SpaceX Logo</title>
               <g class="letter_s">
                 <path class="fill-white" d="M37.5,30.5H10.9v-6.6h34.3c-0.9-2.8-3.8-5.4-8.9-5.4H11.4c-5.7,0-9,2.1-9,6.7v4.9c0,4,3.4,6.3,8.4,6.3h26.9v7H1.5
@@ -197,7 +204,11 @@ export default function SignupPage() {
               <g class="letter_swoosh">
                 <path class="fill-white" d="M399,0.7c-80,4.6-117,38.8-125.3,46.9l-1.7,1.6h14.8C326.8,9.1,384.3,2,399,0.7L399,0.7z"></path>
               </g>
-            </svg>
+            </svg> */}
+
+            <Box fontSize={"2rem"} fontFamily={"monospace"} >
+              X PayBack
+            </Box>
 
             <Box mt={"2rem"} >
               <Box sx={{ fontFamily: "monospace", textAlign: "left", mb: "1rem" }}>
